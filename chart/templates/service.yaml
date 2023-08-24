@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "catalyst-go-app.fullname" . }}
+  name: {{ include "prometheus-salesforce-exporter.fullname" . }}
   labels:
-    {{- include "catalyst-go-app.labels" . | nindent 4 }}
+    {{- include "prometheus-salesforce-exporter.labels" . | nindent 4 }}
 spec:
   type: {{ .Values.service.type }}
   ports:
@@ -12,4 +12,4 @@ spec:
       protocol: TCP
       name: http
   selector:
-    {{- include "catalyst-go-app.selectorLabels" . | nindent 4 }}
+    {{- include "prometheus-salesforce-exporter.selectorLabels" . | nindent 4 }}
