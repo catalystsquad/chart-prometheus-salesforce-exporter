@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/catalystsquad/chart-prometheus-salesforce-exporter/compare/v1.0.0...v1.0.1) (2023-08-24)
+
+
+### Bug Fixes
+
+* remove default security context ([#2](https://github.com/catalystsquad/chart-prometheus-salesforce-exporter/issues/2)) ([93522d3](https://github.com/catalystsquad/chart-prometheus-salesforce-exporter/commit/93522d3935fbb13a407cf2a35970999f592868ea))
+
 # 1.0.0 (2023-08-24)
 
 
