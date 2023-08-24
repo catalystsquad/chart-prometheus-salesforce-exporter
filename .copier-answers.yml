@@ -1,0 +1,10 @@
+# Changes here will be overwritten by Copier; NEVER EDIT MANUALLY
+_commit: e0d99af
+_src_path: https://github.com/catalystsquad/copier-helm-chart-go-app
+chart_name: prometheus-salesforce-exporter
+db_choice: None
+docker_registry_domain: quay.io
+githost: github
+github_settings: true
+organization: catalystsquad
+owner_groupname: engineers
