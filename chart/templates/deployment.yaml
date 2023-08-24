@@ -1,13 +1,13 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "catalyst-go-app.fullname" . }}
+  name: {{ include "prometheus-salesforce-exporter.fullname" . }}
   labels:
-    {{- include "catalyst-go-app.labels" . | nindent 4 }}
+    {{- include "prometheus-salesforce-exporter.labels" . | nindent 4 }}
 spec:
   selector:
     matchLabels:
-      {{- include "catalyst-go-app.selectorLabels" . | nindent 6 }}
+      {{- include "prometheus-salesforce-exporter.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -15,13 +15,13 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
-        {{- include "catalyst-go-app.selectorLabels" . | nindent 8 }}
+        {{- include "prometheus-salesforce-exporter.selectorLabels" . | nindent 8 }}
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      serviceAccountName: {{ include "catalyst-go-app.serviceAccountName" . }}
+      serviceAccountName: {{ include "prometheus-salesforce-exporter.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
@@ -42,14 +42,14 @@ spec:
             - name: SALESFORCE_CLIENT_SECRET
               valueFrom:
                 secretKeyRef:
-                  name: {{ include "catalyst-go-app.secretName" . }}
+                  name: {{ include "prometheus-salesforce-exporter.secretName" . }}
                   key: SALESFORCE_CLIENT_SECRET
             - name: SALESFORCE_USERNAME
               value: {{ .Values.salesforce.username | quote }}
             - name: SALESFORCE_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: {{ include "catalyst-go-app.secretName" . }}
+                  name: {{ include "prometheus-salesforce-exporter.secretName" . }}
                   key: SALESFORCE_PASSWORD
             - name: SALESFORCE_API_VERSION
               value: {{ .Values.salesforce.apiVersion | quote }}
