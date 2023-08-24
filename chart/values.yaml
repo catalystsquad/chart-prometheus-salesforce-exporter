@@ -6,18 +6,24 @@ image:
   repository: 'quay.io/catalystsquad/prometheus-salesforce-exporter'
   pullPolicy: IfNotPresent
 
+imagePullSecrets: []
+
 imagePullSecretCredentials: ""
 
-healthCheck:
-  enabled: true
-  path: /health
-  port: 6000
+# REQUIRED
+salesforce:
+  # baseUrl: 
+  # clientId: 
+  # clientSecret: 
+  # username: 
+  # password: 
+  apiVersion: "58.0"
+  grantType: "password"
+
+pollInterval: 1m
 
 http:
-  enabled: true
-  port: 6001
-app: {}
-imagePullSecrets: []
+  port: 8080
 
 serviceAccount:
   # Specifies whether a service account should be created
@@ -45,50 +51,16 @@ securityContext:
 
 service:
   type: ClusterIP
-  port: 6000
+  port: 8080
 
 resources: {}
-
-autoscaling:
-  minReplicas: 1
-  maxReplicas: 1
-  targetCPUUtilizationPercentage: 80
-  targetMemoryUtilizationPercentage: 80
 
 nodeSelector: {}
 
 tolerations: []
 
-affinity: 
-  podAntiAffinity:
-    preferredDuringSchedulingIgnoredDuringExecution:
-    - weight: 95
-      podAffinityTerm:
-        labelSelector:
-          matchExpressions:
-          - key: app.kubernetes.io/name
-            operator: In
-            values:
-            - prometheus-salesforce-exporter
-        topologyKey: kubernetes.io/hostname
-sentry:
-  enabled: false
-  debug: false
-  environment: local
-  sampleRate: 1.0
-  tracesSampleRate: 1.0
-  dsn: ''
-  clientOptions: {}
-  additionalTags: []
-prometheus:
-  enabled: false
-  path: "/metrics"
-  port: 9090
-  latencyHistogramsEnabled: true
-  serviceMonitor:
-    interval: 15s
-    scrapeTimeout: 10s
-    relabelings: []
+affinity: {}
+
 serviceMonitor:
   enabled: false
   namespaceSelector: {}
