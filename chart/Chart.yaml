@@ -2,7 +2,7 @@ apiVersion: v2
 name: prometheus-salesforce-exporter
 description: Helm chart for prometheus-salesforce-exporter
 type: application
-version: 1.0.0
+version: 1.0.1
 appVersion: "1.0.0"
 dependencies: []
 
