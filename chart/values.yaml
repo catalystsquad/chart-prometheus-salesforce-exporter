@@ -1,4 +1,3 @@
-# Don't change the name without changing affinity and such
 nameOverride: prometheus-salesforce-exporter
 replicaCount: 1
 
